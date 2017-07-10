@@ -1,0 +1,66 @@
+Pseudo code
+
+// load the maze
+			while (next line != null) {
+				skip first line
+					for (all values in row) {
+						if (not the first element) {
+							if (value is 1) {
+								set the tile at this position to being not solid.
+							} else {
+								set the tile at this position to being solid.
+							}
+						}
+					}
+				}
+				write read line to file
+			}
+// scan edges for the end and start of the maze
+
+for (top row of maze and bottom row of maze) {
+	for (columns in the row) {
+		if (solid) {
+		 increment checksum.
+		} else {
+			set this position as a possible start/end
+		}
+	}
+	if (checksum != number of values in the row) {
+		if (start hasn't been found) {
+			set start to the possible position.
+		} else {
+			set end to the possible position.
+		}
+	}
+}
+
+for (left column of maze and right column of maze) {
+	for (rows in the column) {
+		if (solid) {
+		 increment checksum.
+		} else {
+			set this position as a possible start/end
+		}
+	}
+	if (checksum != number of values in the column) {
+		if (start hasn't been found) {
+			set start to the possible position.
+		} else {
+			set end to the possible position.
+		}
+	}
+}
+
+call recursive pathfinding method that takes the current position as an argument (startx, starty)
+
+recursive method:
+
+if (current position = end) {
+return
+}
+
+check surrounding tiles and check their distances to the end.
+Go to the tile with the shortest distance to the end.
+increment the chosen tile's distance modifier to +MazeSize
+draw maze
+call recursive method with new coordinates
